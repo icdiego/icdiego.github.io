@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="bgpage" style="background-color: #ffffff">
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#000000"></div>
+
+<script>
+
+    var velocityX = 5;
+    var velocityY = 3;
+    var positionX = 0;
+    var positionY = 0;
+    var positionColorD1 = 0;
+    var positionBgColorD1 = 15;
+    var positionColorD2 = 0;
+    var positionBgColorD2 = 15;
+    var minX = 0;
+    var minY = 0;
+    var maxX = 300;
+    var maxY = 300;
+    var minColorLengthD1 = 0;
+    var minColorLengthD2 = 0;
+    var reverseX = false
+    var reverseY = false
+    var reverseColorD1 = false
+    var minBgColorD1 = 0;
+    var maxBgColorD1 = 15;
+    var minBgColorD2 = 0;
+    var maxBgColorD2 = 15;
+    var pair = "";
+    var pairBg = "";
+
+    const firstDigit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        'A', 'B', 'C', 'D', 'F']
+    const secondDigit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        'A', 'B', 'C', 'D', 'F']
+
+    var maxColorLengthD1 = firstDigit.length;
+    var maxColorLengthD2 = secondDigit.length;
+
+    var ball = document.getElementById('ball');
+    var bgpage = document.getElementById('bgpage');
+
+    function reverseFunc() {
+        if (positionX === maxX) {
+            reverseX = true
+        }
+        if (positionX === minX) {
+            reverseX = false
+        }
+        if (positionY === maxY) {
+            reverseY = true
+        }
+        if (positionY === minY) {
+            reverseY = false
+        }
+        if (positionColorD1 > maxColorLengthD1) {
+            reverseColorD1 = true
+        }
+        if (positionColorD1 < minColorLengthD1) {
+            reverseColorD1 = false
+        }
+    }
+
+    function fadeInOutBall() {
+        if (reverseColorD1 === false) {
+            if (positionColorD1 < minColorLengthD1) {
+                positionColorD1 = minColorLengthD1;
+                positionColorD2 = minColorLengthD2;
+            }
+            pair = firstDigit[positionColorD1] + secondDigit[positionColorD2];
+            positionColorD2++;
+            if (positionColorD2 === maxColorLengthD2) {
+                positionColorD2 = 0;
+                positionColorD1++;
+            }
+        } else {
+            if (positionColorD1 > maxColorLengthD1) {
+                positionColorD1 = maxColorLengthD1;
+                positionColorD2 = maxColorLengthD2;
+            }
+            pair = firstDigit[positionColorD1] + secondDigit[positionColorD2];
+            positionColorD2--;
+            if (positionColorD2 === minColorLengthD2) {
+                positionColorD2 = maxColorLengthD2;
+                positionColorD1--;
+            }
+        }
+    }
+
+    function fadeInOutBg() {
+        if (reverseColorD1 === true) {
+            if (positionBgColorD1 < minBgColorD1) {
+                positionBgColorD1 = minBgColorD1;
+                positionBgColorD2 = minBgColorD2;
+            }
+            pairBg = firstDigit[positionBgColorD1] + secondDigit[positionBgColorD2];
+            positionBgColorD2++;
+            if (positionBgColorD2 === maxBgColorD2) {
+                positionBgColorD2 = 0;
+                positionBgColorD1++;
+            }
+        } else {
+            if (positionBgColorD1 > maxBgColorD1) {
+                positionBgColorD1 = maxBgColorD1;
+                positionBgColorD2 = maxBgColorD2;
+            }
+            pairBg = firstDigit[positionBgColorD1] + secondDigit[positionBgColorD2];
+            positionBgColorD2--;
+            if (positionBgColorD2 === minBgColorD2) {
+                positionBgColorD2 = maxBgColorD2;
+                positionBgColorD1--;
+            }
+        }
+    }
+
+    function changePosition() {
+        reverseFunc();
+        fadeInOutBall();
+        fadeInOutBg();
+        if (reverseX === false) {
+            positionX = positionX + velocityX;
+        } else {
+            positionX = positionX - velocityX;
+        }
+        if (reverseY === false) {
+            positionY = positionY + velocityY;
+        } else {
+            positionY = positionY - velocityY;
+        }
+
+        ball.style.left = positionX + "px";
+        ball.style.top = positionY + "px";
+        ball.style.background = '#' + pair.repeat(3);
+        bgpage.style.background = '#' + pairBg.repeat(3);
+    }
+
+
+    setInterval(changePosition, 30);
+
+</script>
+
+</body>
+</html>
