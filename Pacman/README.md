@@ -21,6 +21,6 @@ The animation file is pacman.js
 The starter source code is from  MIT xPro Professional Certificate 
 in Coding: Full Stack Development with MERN.
 
-I wrote the function checkPageBounds(direction, imgWidth, pos, pageWidth)
+I wrote the function checkPageBounds(direction, imgWidth, pos, pageWidth) and add the ghost animation.
 
 ---
