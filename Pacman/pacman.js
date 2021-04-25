@@ -1,11 +1,16 @@
 // pos is the PacMan image position variable- it is set to 0 initially
 var pos = 0;
+var posGhost = -250;
 //pageWidth is the width of the webpage. This is later used to calculate when Pac-Man needs to turn around.
 let pageWidth = window.innerWidth;
 //This array contains all the PacMan movement images
 const pacArray = [
   ['./images/PacMan1.png', './images/PacMan2.png'],
   ['./images/PacMan3.png', './images/PacMan4.png'],
+];
+const ghostArray = [
+    ['./images/ghost_01.png', './images/ghost_01.png'],
+    ['./images/ghost_02.png', './images/ghost_02.png']
 ];
 
 // this variable defines what direction should PacMan go into:
@@ -19,16 +24,20 @@ var focus = 0;
 // This function is called on mouse click. Every time it is called, it updates the PacMan image, position and direction on the screen.
 function Run() {
   let img = document.getElementById('PacMan');
+  let imgGhost = document.getElementById('Ghost');
   let imgWidth = img.width;
   focus = (focus + 1) % 2;
   direction = checkPageBounds(direction, imgWidth, pos, pageWidth);
   img.src = pacArray[direction][focus];
+  imgGhost.src = ghostArray[direction][focus];
   if (direction) {
     pos -= 20;
     img.style.left = pos + 'px';
+    imgGhost.style.left = posGhost + pos + 'px';
   } else {
     pos += 20;
     img.style.left = pos + 'px';
+    imgGhost.style.left = posGhost + pos + 'px';
   }
 }
 // TODO: Add a Javascript setInterval() method that will call the Run() function above every 200 milliseconds.
@@ -58,4 +67,3 @@ function checkPageBounds(direction, imgWidth, pos, pageWidth) {
 
   return direction;
 }
-
