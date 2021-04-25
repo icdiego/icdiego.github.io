@@ -23,3 +23,4 @@ in Coding: Full Stack Development with MERN.
 
 I wrote the function checkPageBounds(direction, imgWidth, pos, pageWidth)
 
+---
