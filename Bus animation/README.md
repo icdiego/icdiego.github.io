@@ -9,8 +9,8 @@ New York and shows the nearest Bus Stops around the area.
 
 ### **File**
 
-The css file is styles.css
-The main script is busStop.js
+The css file is styles.css <br>
+The main script is busStop.js <br>
 The json data is in the folder data/stops-for-location.json
 
 
