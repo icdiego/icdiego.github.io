@@ -7,7 +7,7 @@ index.html is a web map that show a specific area of
 New York and shows the nearest Bus Stops around the area.
 
 ### **How to Run**
-You need to get your accessToken from mapbox and past it in the js file
+Open the index.html
 
 ### **Roadmap of future improvements:**
 I couldn't do a fetch in too MTA Bus API. Problem with CORS.<br>
