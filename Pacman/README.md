@@ -7,7 +7,7 @@ two images are used for moving in one direction, and the other
 two for changing direction when Pacman reach the window border.
 
 ### **How to Run**
-Just open the index.html
+Just open the Pacman.html
 
 ### **Roadmap of future improvements:**
 Pacman can move around the de browser.
