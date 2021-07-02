@@ -1,0 +1,59 @@
+.card {
+    display: grid;
+    grid-template-columns: 20vw;
+    grid-template-rows: 30vh 30vh;
+    grid-template-areas: "image" "text";
+
+    background: lightgrey;
+    font-family: 'poppins', sans-serif;
+    text-align: center;
+
+    transition: 0.5s ease;
+    margin: 30px;
+}
+
+.card-image {
+    grid-area: image;
+    background: url("../images/pacmen1.jpg");
+    background-size: cover;
+}
+
+.card-text {
+    grid-area: text;
+    margin: 25px;
+}
+
+.card-text .date {
+    color: rgb(0,0,0);
+    font-size: .7vmax;
+}
+
+.card-text p {
+    color: grey;
+    font-size: .8vmax;
+    font-weight: 300;
+}
+
+.card:hover {
+    transform: scale(1.15);
+}
+
+/*card2*/
+.card-image.card2 {
+    background: url("../images/busstop.jpg");
+    background-size: cover;
+}
+
+.card-text.card2 .date {
+    color: rgb(0, 0, 0);
+}
+
+/*card3*/
+.card-image.card3 {
+    background: url("../images/eyes.jpg");
+    background-size: cover;
+}
+
+.card-text.card3 .date {
+    color: rgb(0, 0, 0);
+}
